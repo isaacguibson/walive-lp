@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walive — Open-Source 2D Animation Software</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0b0f19',
+                        darkCard: '#131c2e',
+                        darkBorder: '#1f293d',
+                        brandPrimary: '#6366f1',
+                        brandSecondary: '#a855f7',
+                        brandAccent: '#06b6d4',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        /* Custom glowing gradients */
+        .glow-effect {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-darkBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <img src="assets/icons/android-chrome-192x192.png" alt="Walive" class="w-10 h-10 rounded-xl shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">Walive</span>
+            </a>
+
+            <!-- CTA Header -->
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/isaacguibson/walive" target="_blank" class="hidden sm:inline-flex items-center space-x-2 text-slate-300 hover:text-white text-sm font-medium transition-colors px-3 py-2 rounded-lg hover:bg-slate-800/50">
+                    <i class="fa-brands fa-github text-lg"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://github.com/isaacguibson/walive/releases/download/0.1.0/Walive-Setup-0.1.0-x64.exe" class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl hover:from-indigo-400 hover:to-purple-500 shadow-lg shadow-indigo-500/25 active:scale-95">
+                    <i class="fa-solid fa-download mr-2"></i> Download for Free
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background Glow Elements -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] glow-effect rounded-full pointer-events-none blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge Open Source -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-6 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                <span>100% Free & Open Source</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Bring your ideas to life with <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Walive</span>
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Lightweight, modern 2D animation software. Create fluid frame-by-frame animations with your favorite AI assistant.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://github.com/isaacguibson/walive/releases/download/0.1.0/Walive-Setup-0.1.0-x64.exe" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-[length:200%_auto] hover:bg-[position:right_center] rounded-2xl shadow-xl shadow-indigo-600/30 hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-cloud-arrow-down mr-3 text-lg"></i> Download for Windows (v0.1.0)
+                </a>
+            </div>
+
+            <!-- OS Compatibility Subtext -->
+            <p class="mt-4 text-xs text-slate-500 flex items-center justify-center gap-2">
+                <i class="fa-brands fa-windows text-slate-400"></i> Windows 10 & 11 (64-bit)
+            </p>
+        </div>
+    </section>
+
+    <!-- App Mockup / Preview Showcase Section -->
+    <section id="preview" class="py-12 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <img src="assets/images/screen_record.gif" alt="App Preview" class="w-full rounded-3xl mb-6">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-bold tracking-widest text-indigo-400 mb-3">Clean & Flexible</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Everything you need to create amazing animations</h3>
+                <p class="mt-4 text-slate-400">Built for new animators. No expensive monthly subscriptions or feature restrictions.</p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-darkCard border border-darkBorder rounded-3xl p-8 card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">1. Frame-by-Frame 2D Animation</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        Full control over every frame with professional onion skinning tools, smooth vector lines, and support for highly precise custom brushes.
+                    </p>
+                    <ul class="mt-6 space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Advanced multi-layer onion skinning</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Infinitely scalable vector lines</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-darkCard border border-darkBorder rounded-3xl p-8 card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">2. AI Integration</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        Speed up repetitive tasks. Integrate your favorite AI into your animation workflow.
+                    </p>
+                    <ul class="mt-6 space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Frame generation</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Intelligent art assistant</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div id="opensource" class="bg-darkCard border border-darkBorder rounded-3xl p-8 card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">3. Always Free & Open Source</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        We believe creativity should be free. Walive is open source, with no paywalls or watermarks. It is funded entirely by voluntary community donations.
+                    </p>
+                    <ul class="mt-6 space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> 100% open source on GitHub</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> No paywalls or subscriptions</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-darkCard border border-darkBorder rounded-3xl p-8 card-hover relative group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">4. Beginner-Friendly Interface</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        Forget complex interfaces packed with confusing menus. Walive's clean, intuitive design is ideal for animation beginners and powerful enough for professionals.
+                    </p>
+                    <ul class="mt-6 space-y-2 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Clean, customizable panels</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Intuitive keyboard shortcuts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Donation Section -->
+    <section id="community" class="py-20 bg-darkCard/30 border-y border-darkBorder relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="text-xs uppercase font-bold tracking-widest text-purple-400 mb-3 block">Community & Donations</span>
+            <h3 class="text-3xl font-extrabold text-white mb-4">Made for the community — support us if you'd like</h3>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-8">
+                Walive is made possible by the voluntary support of its users. If the project helps you create, consider supporting its continued development with a donation.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/isaacguibson/walive" target="_blank" class="px-6 py-3 rounded-xl bg-slate-800 border border-darkBorder text-white text-sm font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2">
+                    <i class="fa-brands fa-github text-lg"></i> Contribute on GitHub
+                </a>
+                <a href="#download" onclick="triggerFakeDownload(event)" class="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-purple-600/25">
+                    <i class="fa-solid fa-mug-hot"></i> Buy me a coffee
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section (Fake Download Trigger) -->
+    <section id="download" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-br from-indigo-900/40 via-darkCard to-purple-900/40 border border-indigo-500/30 rounded-3xl p-10 sm:p-14 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to bring your drawings to life?</h3>
+                <p class="text-slate-300 max-w-xl mx-auto mb-8">
+                    Download the latest version of Walive for Windows and start animating today.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/isaacguibson/walive/releases/download/0.1.0/Walive-Setup-0.1.0-x64.exe" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl shadow-xl shadow-indigo-500/30 hover:scale-105 active:scale-95">
+                        <i class="fa-solid fa-download mr-3 text-lg"></i> Download Walive v0.1.0 (.exe)
+                    </a>
+                </div>
+
+                <p class="mt-6 text-xs text-slate-400">
+                    By downloading, you agree to the terms of the <span class="text-indigo-400 font-medium">GPLv3</span> license.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkBg border-t border-darkBorder py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <img src="assets/icons/android-chrome-192x192.png" alt="Walive" class="w-8 h-8 rounded-lg">
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-left">
+                © 2026 Walive Open Source Project (Guibson Softwares). Made with care for the creative community.
+            </p>
+            <div class="flex items-center space-x-6 text-slate-400 text-sm">
+                <a href="https://github.com/isaacguibson/walive" target="_blank" class="hover:text-indigo-400 transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fake Download Modal / Notification Popup -->
+    <div id="downloadModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-darkCard border border-darkBorder rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl mb-4">
+                <i class="fa-solid fa-rocket animate-bounce"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-2">Download Simulation</h4>
+            <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+                This is a landing page. In the actual ElectronJS app, this button will trigger a direct download of the <span class="text-indigo-400 font-semibold">Walive</span> executable installer (.exe).
+            </p>
+            <div class="flex justify-end">
+                <button onclick="closeDownloadModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition-colors shadow-lg shadow-indigo-600/30">
+                    Got it
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal Interaction -->
+    <script>
+        function triggerFakeDownload(e) {
+            e.preventDefault();
+            const modal = document.getElementById('downloadModal');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeDownloadModal() {
+            const modal = document.getElementById('downloadModal');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('downloadModal');
+            if (event.target === modal) {
+                closeDownloadModal();
+            }
+        }
+    </script>
+</body>
+</html>
